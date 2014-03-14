@@ -6,7 +6,7 @@ main = scotty 3000 $ do
   get "/" $ do
     text "gotten!"
   get "/:num" $ do
-    (num :: Integer) <- param "word"
+    num <- param "num"
     html $ mconcat ["<h1>Scotty, ", num, " me up!</h1>"]
   delete "/" $ do
     text "deleted!"
