@@ -12,7 +12,10 @@ main = scotty 3000 $ do
     num <- (liftM decimal) (param "num")
     case num of
       Left error -> html $ mconcat ["<h1>error yo: ", T.pack error]
-      Right (val, blah) -> html $ mconcat ["<h1>val + 1 == ", (T.pack . show) (val + 1), "</h1>"]
+      Right (val, blah) -> html $ mconcat ["<h1>val + 1 == ",
+                                           (T.pack . show) (val + 1),
+                                           "</h1>\nAlso blah was: ",
+                                           T.fromStrict blah]
   delete "/" $ do
     text "deleted!"
   post "/" $ do
